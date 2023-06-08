@@ -57,12 +57,9 @@ def pyrdown(
     """
     KORNIA_CHECK_SHAPE(xinput, ["B", "C", "H", "W"])
 
-    # Blurring
-    x_blur: Tensor = filter2d(xinput, kernel, border_type)
-
-    # Downsampling
+    # Blur, then Downsample
     out: Tensor = F.interpolate(
-        input=x_blur,
+        input=filter2d(xinput, kernel, border_type),
         scale_factor=1.0 / factor,
         mode="bilinear",
         align_corners=align_corners,
@@ -94,7 +91,7 @@ def pyrup(
     """
     KORNIA_CHECK_SHAPE(xinput, ["B", "C", "H", "W"])
 
-    # Upsampling
+    # Upsample
     if force_size is None:
         x_up: Tensor = F.interpolate(
             input=xinput,
@@ -110,7 +107,7 @@ def pyrup(
             align_corners=align_corners,
         )
 
-    # Blurring
+    # then Blur
     x_blur: Tensor = filter2d(x_up, kernel, border_type)
     return x_blur
 
@@ -156,9 +153,7 @@ def pyramid_build_down(
     # Iteration and Downsampling
     _: int
     for _ in range(max_level - 1):
-        img_curr: Tensor = pyramid[-1]
-        img_down: Tensor = pyrdown(img_curr, kernel, border_type, align_corners, factor)
-        pyramid.append(img_down)
+        pyramid.append(pyrdown(pyramid[-1], kernel, border_type, align_corners, factor))
 
     return pyramid
 
@@ -204,22 +199,15 @@ def pyramid_scale_up(
 
     # Iteration and Upsampling
     itidx: int
-    for itidx in range(iterations - 1):
+    for itidx in range(iterations):
         xoutput: Tensor = pyrup(
             xoutput,
             kernel,
             border_type,
             align_corners,
             factor,
-            force_size=force_size if itidx == iterations - 2 else None,
+            force_size=force_size if itidx == iterations - 1 else None,
         )
-    xoutput: Tensor = pyrup(
-        xoutput,
-        kernel,
-        border_type,
-        align_corners,
-        factor=1,
-    )
 
     return xoutput
 
@@ -291,11 +279,11 @@ def retina_pyramid(
 
     # Upscale the layers
     layer_idx: int
-    for layer_idx in range(nlayers):
+    for layer_idx in range(1, nlayers):
         pyramid[layer_idx] = pyramid_scale_up(
             pyramid[layer_idx],
             kernel,
-            iterations=layer_idx + 1,
+            iterations=layer_idx,
             border_type=border_type,
             align_corners=align_corners,
             factor=factor,
