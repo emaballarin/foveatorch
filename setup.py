@@ -64,7 +64,7 @@ setup(
         package for package in find_packages() if package.startswith(PACKAGENAME)
     ],
     classifiers=[
-        "Development Status :: 3 - Beta",
+        "Development Status :: 4 - Beta",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Environment :: Console",
         "Programming Language :: Python :: 3",
