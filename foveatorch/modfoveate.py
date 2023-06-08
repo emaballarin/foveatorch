@@ -203,8 +203,6 @@ def foveate(
         torch.Tensor: foveated image with shape :math:`(B, C, H, W)`.
     """
     KORNIA_CHECK_SHAPE(xinput, ["B", "C", "H", "W"])
-    print(xinput.shape)
-    print(fixation_pts.shape)
     return _foveate(
         xinput, fixation_pts, nlayers, p, alpha, kernel_size, sigma, k, eps, device
     )
