@@ -4,6 +4,6 @@
 #  (see: https://url.ballarin.cc/mitlicense)
 #
 # ------------------------------------------------------------------------------
-torch>=1.9.1
-torchvision>=0.10.1
+torch>=2.0.0
+torchvision>=0.15.1
 kornia>=0.6.12

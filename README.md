@@ -1,6 +1,6 @@
 # `FoveaTorch` 👀🔥 <a href="https://bucket.ballarin.cc/serve/img/foveatorch_dalle2.png"><img src="https://bucket.ballarin.cc/serve/img/foveatorch_dalle2.png" align="right" height="139" /></a>
 
-Foveated vision for Deep Learning methods
+Differentiable foveated vision for Deep Learning methods
 
 ---
 

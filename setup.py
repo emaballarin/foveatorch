@@ -45,11 +45,11 @@ PACKAGENAME: str = "foveatorch"
 
 setup(
     name=PACKAGENAME,
-    version="0.0.2",
+    version="0.0.3",
     author="Emanuele Ballarin",
     author_email="emanuele@ballarin.cc",
     url="https://github.com/emaballarin/foveatorch",
-    description="Foveated vision for Deep Learning methods",
+    description="Differentiable foveated vision for Deep Learning methods",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     keywords=[
@@ -57,6 +57,7 @@ setup(
         "Machine Learning",
         "Computer Vision",
         "Computational Neuroscience",
+        "Differentiable Programming",
     ],
     license="MIT",
     packages=[
