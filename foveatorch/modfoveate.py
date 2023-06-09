@@ -175,7 +175,7 @@ _foveate = th.vmap(
 
 def foveate(
     xinput: Tensor,
-    fixation_pts: Tensor | None = None,
+    fixation_pts: Tensor,
     nlayers: int = 6,
     p: float = 7.5,
     alpha: float = 2.5,
@@ -239,8 +239,13 @@ class Foveate2D(th.nn.Module):
         return self
 
     def forward(self, xinput: Tensor, fixation_pts: Tensor | None = None) -> Tensor:
-        if fixation_pts is None and self._fixate_points is not None:
+        if fixation_pts is None:
+            if self._fixate_points is None:
+                raise ValueError(
+                    "Fixation points must be provided: either directly, or via the `fixate` method."
+                )
             fixation_pts = self._fixate_points
+
         return foveate(
             xinput,
             fixation_pts,
