@@ -15,5 +15,4 @@ from .modfoveate import Foveate2D
 
 # Cleanup
 del modfoveate
-del neopyramid
 # ------------------------------------------------------------------------------

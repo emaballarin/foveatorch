@@ -26,7 +26,7 @@ from .neopyramid import retina_pyramid
 
 # ------------------------------------------------------------------------------
 
-__all__ = ["foveate_atomic", "_foveate", "foveate"]
+__all__ = ["foveate_atomic", "foveate", "Foveate2D"]
 
 
 def foveate_atomic(
@@ -78,8 +78,6 @@ def foveate_atomic(
     if device is None:
         device = "cuda" if th.cuda.is_available() else "cpu"
     else:
-        if device not in ["cpu", "cuda"]:
-            raise ValueError("device must be either 'cpu' or 'cuda'.")
         if device == "cuda" and not th.cuda.is_available():
             raise RuntimeError("CUDA is not available.")
 
