@@ -4,7 +4,7 @@
 #
 #  Copyright (c) 2018-2023 The Kornia Developers (original implementation,
 #                see: https://github.com/kornia/kornia/blob/master/kornia/geometry/transform/pyramid.py)
-#            (c) 2023 Emanuele Ballarin <emanuele@ballarin.cc>
+#            (c) 2024 Emanuele Ballarin <emanuele@ballarin.cc>
 #
 #  Originally released under the terms of the Apache License, Version 2.0
 #  (see: https://github.com/kornia/kornia/blob/master/LICENSE)

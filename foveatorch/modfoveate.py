@@ -4,7 +4,7 @@
 #
 #  Copyright (c) 2018-2023 Zhibo Yang (CV2/NumPy original,
 #                see: https://github.com/ouyangzhibo/Image_Foveation_Python/blob/master/retina_transform.py)
-#            (c) 2023 Emanuele Ballarin <emanuele@ballarin.cc>
+#            (c) 2024 Emanuele Ballarin <emanuele@ballarin.cc>
 #
 #  Originally released under the terms of the MIT License
 #  (see: https://github.com/ouyangzhibo/Image_Foveation_Python/blob/master/LICENSE)

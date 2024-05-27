@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # ------------------------------------------------------------------------------
 #
-#  Copyright (c) 2023 Emanuele Ballarin <emanuele@ballarin.cc>
+#  Copyright (c) 2024 Emanuele Ballarin <emanuele@ballarin.cc>
 #  Released under the terms of the MIT License
 #  (see: https://url.ballarin.cc/mitlicense)
 #
@@ -19,33 +19,11 @@ def read(fname):
         return f.read().strip()
 
 
-def check_dependencies(dependencies: list[str]):
-    missing_dependencies: list[str] = []
-    package_name: str
-    for package_name in dependencies:
-        try:
-            __import__(package_name)
-        except ImportError:
-            missing_dependencies.append(package_name)
-
-    if missing_dependencies:
-        warnings.warn(f"Missing dependencies: {missing_dependencies}")
-
-
-DEPENDENCY_PACKAGE_NAMES: list[str] = [
-    "kornia",
-    "torch",
-    "torchvision",
-]
-
-check_dependencies(DEPENDENCY_PACKAGE_NAMES)
-
 PACKAGENAME: str = "foveatorch"
-
 
 setup(
     name=PACKAGENAME,
-    version="0.1.2",
+    version="0.1.3",
     author="Emanuele Ballarin",
     author_email="emanuele@ballarin.cc",
     url="https://github.com/emaballarin/foveatorch",
@@ -71,6 +49,10 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     python_requires=">=3.10",
+    install_requires=[
+        "torch>=2",
+        "kornia>=0.6.12",
+    ],
     include_package_data=True,
     zip_safe=False,
 )
