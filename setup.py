@@ -8,7 +8,6 @@
 #
 # ------------------------------------------------------------------------------
 import os
-import warnings
 
 from setuptools import find_packages
 from setuptools import setup
@@ -23,7 +22,7 @@ PACKAGENAME: str = "foveatorch"
 
 setup(
     name=PACKAGENAME,
-    version="0.1.3",
+    version="0.1.4",
     author="Emanuele Ballarin",
     author_email="emanuele@ballarin.cc",
     url="https://github.com/emaballarin/foveatorch",
