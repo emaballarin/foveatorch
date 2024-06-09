@@ -259,7 +259,7 @@ class Foveate2D(th.nn.Module):
         )
 
 
-class FovealPyramidBlur(nn.Module):
+class FovealPyramidBlur(th.nn.Module):
     def __init__(
         self,
         pyramid_level: int,

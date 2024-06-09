@@ -22,7 +22,7 @@ PACKAGENAME: str = "foveatorch"
 
 setup(
     name=PACKAGENAME,
-    version="0.1.5",
+    version="0.1.6",
     author="Emanuele Ballarin",
     author_email="emanuele@ballarin.cc",
     url="https://github.com/emaballarin/foveatorch",
