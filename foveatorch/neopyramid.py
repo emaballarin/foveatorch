@@ -31,6 +31,7 @@ __all__ = [
     "pyramid_build_down",
     "pyramid_scale_up",
     "retina_pyramid",
+    "retina_pyramid_blur",
 ]
 
 
@@ -289,3 +290,28 @@ def retina_pyramid(
         )
 
     return pyramid
+
+
+def retina_pyramid_blur(
+    xinput: Tensor,
+    pyramid_level: int,
+    kernel_size: int = 5,
+    sigma: float = 1,
+    nlayers: int = 6,
+    border_type: str = "reflect",
+    align_corners: bool = False,
+    factor: float = 2.0,
+    device: Device | None = None,
+    dtype: Dtype | None = None,
+) -> Tensor:
+    return retina_pyramid(
+        xinput=xinput,
+        kernel_size=kernel_size,
+        sigma=sigma,
+        nlayers=nlayers,
+        border_type=border_type,
+        align_corners=align_corners,
+        factor=factor,
+        device=device,
+        dtype=dtype,
+    )[pyramid_level]

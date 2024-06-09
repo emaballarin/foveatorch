@@ -8,6 +8,7 @@
 #
 # ------------------------------------------------------------------------------
 # Imports
+from .modfoveate import FovealPyramidBlur
 from .modfoveate import foveate
 from .modfoveate import Foveate2D
 

@@ -272,3 +272,5 @@ datasets/
 # IntelliJ IDEA configuration files (as a whole)
 .idea/
 .idea/**
+.cadence/
+.cadence/**

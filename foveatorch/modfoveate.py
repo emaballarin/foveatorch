@@ -23,10 +23,11 @@ from kornia.core.check import KORNIA_CHECK_SHAPE
 from torch import logical_and
 
 from .neopyramid import retina_pyramid
+from .neopyramid import retina_pyramid_blur
 
 # ------------------------------------------------------------------------------
 
-__all__ = ["foveate_atomic", "foveate", "Foveate2D"]
+__all__ = ["foveate_atomic", "foveate", "Foveate2D", "FovealPyramidBlur"]
 
 
 def foveate_atomic(
@@ -255,4 +256,39 @@ class Foveate2D(th.nn.Module):
             self._k,
             self._eps,
             self._device,
+        )
+
+
+class FovealPyramidBlur(nn.Module):
+    def __init__(
+        self,
+        pyramid_level: int,
+        kernel_size: int = 5,
+        sigma: float = 0.248,
+        nlayers: int = 6,
+        border_type: str = "reflect",
+        align_corners: bool = False,
+        factor: float = 2.0,
+    ) -> None:
+        super().__init__()
+        self.pyramid_level: int = pyramid_level
+        self.kernel_size: int = kernel_size
+        self.sigma: float = sigma
+        self.nlayers: int = nlayers
+        self.border_type: str = border_type
+        self.align_corners: bool = align_corners
+        self.factor: float = factor
+
+    def forward(self, xinput: Tensor) -> Tensor:
+        return retina_pyramid_blur(
+            xinput=xinput,
+            pyramid_level=self.pyramid_level,
+            kernel_size=self.kernel_size,
+            sigma=self.sigma,
+            nlayers=self.nlayers,
+            border_type=self.border_type,
+            align_corners=self.align_corners,
+            factor=self.factor,
+            device=xinput.device,
+            dtype=xinput.dtype,
         )
