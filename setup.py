@@ -22,7 +22,7 @@ PACKAGENAME: str = "foveatorch"
 
 setup(
     name=PACKAGENAME,
-    version="0.1.6",
+    version="0.1.7",
     author="Emanuele Ballarin",
     author_email="emanuele@ballarin.cc",
     url="https://github.com/emaballarin/foveatorch",
@@ -47,11 +47,11 @@ setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires=">=3.10",
+    python_requires=">=3.11",
     install_requires=[
         "torch>=2",
         "kornia>=0.6.12",
     ],
-    include_package_data=True,
-    zip_safe=False,
+    include_package_data=False,
+    zip_safe=True,
 )
